@@ -36,42 +36,48 @@ void destroyStack(Stack stack){
 void push (Stack stack, Item item){ 
 	Stack s = stack;
 	Item object = item;
+	Item *newArray = NULL;
+	int counter = 0;
 	
-	if(stack->top > stack->maxSize){
+	assert(stack != NULL);
+	
+	if(stack->top >= stack->maxSize){
 		printf("stack overflow\n");
-		s->items = realloc(stack, 2* s->maxSize * sizeof(object));
-		s->maxSize = 2*s->maxSize;
-		assert(stack != NULL);
-		stack->items[stack->top] = object;
-		stack->top++;
+		newArray = malloc(2 * s->maxSize * sizeof(object));
+		for (counter = 0; counter < s->maxSize ; counter++){
+			newArray[counter] = stack->items[counter];
+		}
+		free(stack->items);
+		stack->items = newArray;
+		s->maxSize = 2 * s->maxSize;
 	}
-	else{
-    	assert(stack != NULL);
-    	stack->items[stack->top] = object;
-    	stack->top++;
-    }
+    stack->items[stack->top] = object;
+    stack->top++;
 }
 
 //You need to modify this
 Item pop (Stack stack){
 	Stack s = stack;
-
-
+	Item *newArray = NULL;
+	int counter = 0;
+	
 	if(stack->top == 0){
 		printf("stack underflow\n");
 		abort();
 	} 
-	else if(stack->top <= ((1/4) * stack->maxSize)){
+	else if(stack->top <= ((stack->maxSize)/4)){
 		printf("resizing stack\n");
-		s->items = realloc(stack, (1/2)* s->maxSize *sizeof(Item));
-		s->maxSize = (1/2) * s->maxSize;
-		assert(stack != NULL);
-		stack->top--;
+		newArray = malloc(s->maxSize *sizeof(Item)/2);
+		
+		for(counter = 0; counter < s->maxSize; counter++){
+			newArray[counter] = stack->items[counter];
+		}
+		free(stack->items);
+		stack->items = newArray;
+		s->maxSize = (s->maxSize/2);
 	}
-	else{
-    	assert(stack != NULL);
-    	stack->top--;
-    }
+
+    stack->top--;
     return stack->items[stack->top];
 }
 
