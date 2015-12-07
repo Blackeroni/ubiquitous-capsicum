@@ -55,9 +55,14 @@ void push (Stack stack, Item item){
 //You need to modify this
 Item pop (Stack stack){
 	Stack s = stack;
-	 
-	if(stack->top <= ((1/4) * stack->maxSize)){
+
+
+	if(stack->top == 0){
 		printf("stack underflow\n");
+		abort();
+	} 
+	else if(stack->top <= ((1/4) * stack->maxSize)){
+		printf("resizing stack\n");
 		s->items = malloc((1/2)* s->maxSize *sizeof(Item));
 		s->maxSize = (1/2) * s->maxSize;
 		assert(stack != NULL);
