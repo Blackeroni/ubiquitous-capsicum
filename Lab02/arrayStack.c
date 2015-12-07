@@ -39,7 +39,7 @@ void push (Stack stack, Item item){
 	
 	if(stack->top > stack->maxSize){
 		printf("stack overflow\n");
-		s->items = malloc(2* s->maxSize * sizeof(object));
+		s->items = realloc(stack, 2* s->maxSize * sizeof(object));
 		s->maxSize = 2*s->maxSize;
 		assert(stack != NULL);
 		stack->items[stack->top] = object;
@@ -63,7 +63,7 @@ Item pop (Stack stack){
 	} 
 	else if(stack->top <= ((1/4) * stack->maxSize)){
 		printf("resizing stack\n");
-		s->items = malloc((1/2)* s->maxSize *sizeof(Item));
+		s->items = realloc(stack, (1/2)* s->maxSize *sizeof(Item));
 		s->maxSize = (1/2) * s->maxSize;
 		assert(stack != NULL);
 		stack->top--;
