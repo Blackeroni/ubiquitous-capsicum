@@ -1,0 +1,180 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <assert.h>
+#include "textbuffer.h"
+
+void printTextBuffer(TB tb1);
+void printArray (char array[]);
+void whiteBoxTest (void);
+int main(int argc, char *argv[]) {
+	char *string1 = NULL;
+	char *string2 = NULL;
+	TB tb1 = NULL;
+	TB tb2 = NULL;
+	//whiteBoxTest();
+	printf("\n\n");
+
+	printf("Black Box Test\n");
+	
+	/*printf("Test 1: create text buffer\n");
+	tb1 = newTB("one\ntwo\nanother\npineapple\n");
+    assert(linesTB(tb1) == 4);
+    free(tb1);
+    printf("passed\n");
+
+    printf("Test 2: dump text buffer\n");
+    tb1 = newTB("one\ntwo\nanother\n");
+    string1 = dumpTB(tb1);
+    assert(string1 != NULL);
+    assert(strcmp(string2, "one\ntwo\nanother\npineapple\n") == 0);
+    free(tb1);
+    printf("passed\n");
+
+    printf("Test 3: swap text buffer\n");
+    tb1 = newTB("three\nfour\nfive\n");
+    assert(tb1 != NULL);
+    string1 = dumpTB(tb1);
+    assert(strcmp(string1, "three\nfour\nfive\n") == 0);
+    swapTB(tb1, 0, 1);
+    string1 = dumpTB(tb1);
+    assert(strcmp(string1, "four\nthree\nfive\n") == 0);
+    swapTB(tb1, 1, 2);
+	string1 = dumpTB(tb1);
+    assert(strcmp(string1, "four\nfive\nthree\n") == 0);
+    free(tb1);
+    printf("passed\n");
+    
+	printf("Test 4: merge text buffer\n");
+	tb1 = newTB("six\nseven\nnine\n");
+	tb2 = newTB("nine\nten\neleven\n");
+	string1 = dumpTB(tb1);
+	string2 = dumpTB(tb2);
+	mergeTB(tb1, 0, tb2);
+	string1 = dumpTB(tb1);
+	assert(strcmp(string1, "nine\nten\neleven\nsix\nseven\nnine\n") == 0);
+	free(tb1);
+	tb1 = newTB("six\nseven\nnine\n");
+	tb2 = newTB("nine\nten\neleven\n");
+	string1 = dumpTB(tb1);
+	mergeTB(tb1, 1, tb2);
+	string1 = dumpTB(tb1);
+	assert(strcmp(string1, "nine\nsix\nseven\nnine\nten\neleven\n") == 0);
+	free(tb1);
+	printf("passed\n");*/
+
+	/*printf("Test 5: paste text buffer\n");		//copied from test 4
+	tb1 = newTB("1\n2\n3\n");
+	tb2 = newTB("4\n5\n6\n");
+	string1 = dumpTB(tb1);
+	string2 = dumpTB(tb2);
+	pasteTB(tb1, 0, tb2);
+	string1 = dumpTB(tb1);
+	string2 = dumpTB(tb2);
+	//printf("\n");
+	//printArray(string1);
+	//printf("\n");
+	//printArray(string2);
+	//printf("\n");
+	assert(strcmp(string1, "4\n5\n6\n1\n2\n3\n") == 0);
+	assert(strcmp(string2, "4\n5\n6\n") == 0);
+	free(tb1);
+	free(tb2);
+	tb1 = newTB("1\n2\n3\n");
+	tb2 = newTB("4\n5\n6\n");
+	string1 = dumpTB(tb1);
+	string2 = dumpTB(tb2);
+	pasteTB(tb1, 1, tb2);
+	string1 = dumpTB(tb1);
+	string2 = dumpTB(tb2);
+	//printf("\n");
+	//printArray(string1);
+	//printf("\n");
+	//printArray(string2);
+	//printf("\n");
+	assert(strcmp(string1, "1\n4\n5\n6\n2\n3\n") == 0);
+	assert(strcmp(string2, "4\n5\n6\n") == 0);
+	free(tb1);
+	free(tb2);
+	tb1 = newTB("1\n2\n3\n");
+	tb2 = newTB("4\n5\n6\n");
+	string1 = dumpTB(tb1);
+	string2 = dumpTB(tb2);
+	pasteTB(tb1, 2, tb2);
+	string1 = dumpTB(tb1);
+	string2 = dumpTB(tb2);
+	//printf("\n");
+	//printArray(string1);
+	//printf("\n");
+	//printArray(string2);
+	//printf("\n");
+	assert(strcmp(string1, "1\n2\n4\n5\n6\n3\n") == 0);
+	assert(strcmp(string2, "4\n5\n6\n") == 0);
+	free(tb1);
+	free(tb2);
+	printf("passed\n");*/
+
+	printf("Test 6: cut text buffer\n");		//FUCK SAKE
+	/*tb1 = newTB("1\n2\n3\n4\n5\n6\n7\n8\n9\n");
+	tb2 = cutTB(tb1, 0, 2);
+	//printTextBuffer(tb1);
+	//printf("\n");
+	//printTextBuffer(tb2);
+	string1 = dumpTB(tb1);
+	string2 = dumpTB(tb2);
+	//printArray(string1);
+	//printArray(string2);
+	assert(strcmp(string1, "4\n5\n6\n7\n8\n9\n") == 0);
+	assert(strcmp(string2, "1\n2\n3\n") == 0);
+	free(tb1);
+	free(tb2);*/
+	tb1 = newTB("1\n2\n3\n4\n5\n6\n7\n8\n9\n");
+	tb2 = cutTB(tb1, 0, 2);
+	string1 = dumpTB(tb1);
+	string2 = dumpTB(tb2);
+	//printTextBuffer(tb1);
+	//printf("\n");
+	//printTextBuffer(tb2);
+	assert(strcmp(string1, "4\n5\n6\n7\n8\n9\n") == 0);
+	assert(strcmp(string2, "1\n2\n3\n") == 0);
+	tb1 = newTB("1\n2\n3\n4\n5\n6\n7\n8\n9\n");
+	tb2 = cutTB(tb1, 1, 4);
+	string1 = dumpTB(tb1);
+	string2 = dumpTB(tb2);
+	//printText(string1);
+	//printf("\n");
+	//printArray(string2);
+	assert(strcmp(string1, "1\n6\n7\n8\n9\n") == 0);
+	assert(strcmp(string2, "2\n3\n4\n5\n") == 0);
+	free(tb1);
+	free(tb2);
+	tb1 = newTB("1\n2\n3\n4\n5\n6\n7\n8\n9\n");
+	tb2 = cutTB(tb1, 4, 8);
+	//string1 = dumpTB(tb1);
+	//string2 = dumpTB(tb2);
+	printTextBuffer(tb1);
+	printTextBuffer(tb2);
+	printf("passed\n");
+
+	/*printf("Test 7: copy text buffer\n");
+	tb1 = newTB("1\n2\n3\n4\n5\n6\n7\n8\n9\n");
+	tb2 = copyTB(tb1, 0, 4);
+	string1 = dumpTB(tb1);
+	string2 = dumpTB(tb2);
+	assert(strcmp(string1, "1\n2\n3\n4\n5\n6\n7\n8\n9\n") == 0);
+	assert(strcmp(string2, "1\n2\n3\n4\n5\n") == 0);
+	free(tb2);
+	tb2 = copyTB(tb1, 5, 5);
+	string2 = dumpTB(tb2);
+	assert(strcmp(string2, "6\n") == 0);
+	free(tb1);
+	free(tb2);
+	printf("passed\n");*/
+	
+
+	printf("\n");
+ 	printf("all tests passed\n");
+
+
+    return EXIT_SUCCESS;
+}
